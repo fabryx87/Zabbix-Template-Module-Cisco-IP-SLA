@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2020-10-23T11:08:46Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+        <group>
+            <name>Templates/Modules</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Module Cisco IP SLA</template>
+            <name>Template Module Cisco IP SLA</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+                <group>
+                    <name>Templates/Modules</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>IP SLA DNS</name>
+                </application>
+                <application>
+                    <name>IP SLA ECHO</name>
+                </application>
+                <application>
+                    <name>IP SLA HTTP</name>
+                </application>
+            </applications>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>IP SLA DNS Discovery</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},1.3.6.1.4.1.9.9.42.1.2.1.1.4]</snmp_oid>
+                    <key>ipsla.dns.discovery</key>
+                    <delay>1h</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#SNMPVALUE}</macro>
+                                <value>8</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} DNS Query</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.11.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.dns.query.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>60d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA DNS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} Latest RTT Operation Completed Time</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.10.1.1.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.dns.RTTComplTime.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>60d</trends>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA DNS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} Latest RTT Operation Sense Status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.10.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.dns.RTTOperSense.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>2m</delay>
+                            <history>15d</history>
+                            <trends>60d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA DNS</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>IP SLA RTT Status</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} RTT Threshold</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.1.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.dns.RTTThres.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>7d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA DNS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} RTT Timeout</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.1.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.dns.RTTTout.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>7d</history>
+                            <trends>30d</trends>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA DNS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} DNS Server IP address</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.12.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.dns.srv[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>60d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA DNS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} DNS VRF</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.26.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.dns.vrf.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>60d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA DNS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>DNS RTT {{HOST.HOST}:ipsla.dns.query.[&amp;quot;{#SNMPINDEX}&amp;quot;].last(0)}</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <ymax_type_1>FIXED</ymax_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Module Cisco IP SLA</host>
+                                        <key>ipsla.dns.RTTComplTime.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Module Cisco IP SLA</host>
+                                        <key>ipsla.dns.RTTOperSense.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>IP SLA ECHO Discovery</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},1.3.6.1.4.1.9.9.42.1.2.1.1.4]</snmp_oid>
+                    <key>ipsla.echo.discovery</key>
+                    <delay>1h</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#SNMPVALUE}</macro>
+                                <value>1</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>IP SLA ECHO {#SNMPINDEX} Latest RTT Operation Completed Time</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.10.1.1.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.echo.RTTComplTime.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>30s</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA ECHO</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA ECHO{#SNMPINDEX} Latest RTT Operation status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.9.1.10.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.echo.rttMonCtrlOperState.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA ECHO</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>IP SLA Oper Status</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA ECHO{#SNMPINDEX} Latest RTT Operation Sense Status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.10.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.echo.RTTOperSense.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>30s</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA ECHO</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>IP SLA Oper Status</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA ECHO {#SNMPINDEX} RTT frequency</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.1.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.echo.RTTTfreq.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>s</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA ECHO</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA ECHO {#SNMPINDEX} RTT Threshold</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.1.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.echo.RTTThres.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA ECHO</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA ECHO {#SNMPINDEX} RTT Timeout</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.1.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.echo.RTTTout.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA ECHO</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA ECHO {#SNMPINDEX} VRF</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.26.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.echo.vrf.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA ECHO</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>IP SLA HTTP Discovery</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},1.3.6.1.4.1.9.9.42.1.2.1.1.4]</snmp_oid>
+                    <key>ipsla.http.discovery</key>
+                    <delay>1h</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#SNMPVALUE}</macro>
+                                <value>7</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} Latest DNS RTT</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.5.1.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.DNSRTT.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} HTTP Method</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.13.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.method.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>IP SLA HTTP Operation</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} Latest Operation RTT</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.5.1.1.1.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.OperRTT.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>ms</units>
+                            <description>Round Trip Time taken to perform HTTP operation. This value is the sum of DNSRTT, TCPConnectRTT and TransactionRTT.</description>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} HTTP Proxy</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.19.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.proxy.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} RTT Frequency</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.1.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.RTTFreq.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>s</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} RTT Count</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.9.1.8.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.RTTNum.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>5m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} Latest RTT Operation Sense Status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.10.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.RTTOperSense.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>30s</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>IP SLA RTT Status</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} RTT Operation State</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.9.1.10.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.RTTOperState.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>IP SLA Oper Status</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} Latest RTT Operation Timestamp</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.10.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.RTTOperTime.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} RTT Threshold</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.1.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.RTTThres.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} RTT Timeout</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.1.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.RTTTout.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} Latest HTTP Response</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.5.1.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.SenseDescr.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>HTTP status</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} HTTP String 1</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.20.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.str1.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <description>This string stores the content of HTTP raw request. If the request cannot fit into String1 then it should be split and put in Strings 1 through 5.</description>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} HTTP String 2</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.21.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.str2.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <description>This string stores the content of HTTP raw request. If the request cannot fit into String1 then it should be split and put in Strings 1 through 5.</description>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} HTTP String 3</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.22.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.str3.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <description>This string stores the content of HTTP raw request. If the request cannot fit into String1 then it should be split and put in Strings 1 through 5.</description>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} HTTP String 4</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.23.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.str4.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <description>This string stores the content of HTTP raw request. If the request cannot fit into String1 then it should be split and put in Strings 1 through 5.</description>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} HTTP String 5</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.24.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.str5.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <description>This string stores the content of HTTP raw request. If the request cannot fit into String1 then it should be split and put in Strings 1 through 5.</description>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} Latest TCP Connect RTT</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.5.1.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.TCPRTT.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>s</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} HTTP URL</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.15.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.url.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} HTTP Version</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.14.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.ver.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} HTTP VRF</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.2.2.1.26.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.http.vrf.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <delay>10m</delay>
+                            <history>15d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} Latest Message Body Size</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.5.1.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.httpBodySize.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>B</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>IP SLA {#SNMPINDEX} Latest Transaction RTT</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.9.9.42.1.5.1.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>ipsla.httpTransRTT.[&amp;quot;{#SNMPINDEX}&amp;quot;]</key>
+                            <history>15d</history>
+                            <trends>30d</trends>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>IP SLA HTTP</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+    <value_maps>
+        <value_map>
+            <name>HTTP status</name>
+            <mappings>
+                <mapping>
+                    <value>200</value>
+                    <newvalue>OK</newvalue>
+                </mapping>
+                <mapping>
+                    <value>301</value>
+                    <newvalue>MOVED-PERMANENTLY</newvalue>
+                </mapping>
+                <mapping>
+                    <value>302</value>
+                    <newvalue>MOVED-TEMPORARILY</newvalue>
+                </mapping>
+                <mapping>
+                    <value>400</value>
+                    <newvalue>BAD-REQUEST</newvalue>
+                </mapping>
+                <mapping>
+                    <value>401</value>
+                    <newvalue>NOT-AUTHORIZED</newvalue>
+                </mapping>
+                <mapping>
+                    <value>403</value>
+                    <newvalue>FORBIDDEN</newvalue>
+                </mapping>
+                <mapping>
+                    <value>404</value>
+                    <newvalue>NOT FOUND</newvalue>
+                </mapping>
+                <mapping>
+                    <value>500</value>
+                    <newvalue>INTERNAL SERVER ERROR</newvalue>
+                </mapping>
+                <mapping>
+                    <value>501</value>
+                    <newvalue>NOT-IMPLEMENTED</newvalue>
+                </mapping>
+                <mapping>
+                    <value>502</value>
+                    <newvalue>SERVICE-OVERLOADED</newvalue>
+                </mapping>
+                <mapping>
+                    <value>503</value>
+                    <newvalue>GW-TIMEOUT</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>IP SLA HTTP Operation</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>N/A</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>HTTP GET</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>IP SLA Oper Status</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Reset</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Orderly Stop</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>Immediate Stop</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>Pending</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>Inactive</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>Active</newvalue>
+                </mapping>
+                <mapping>
+                    <value>7</value>
+                    <newvalue>Restart</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>IP SLA RTT Status</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>other</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>ok</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>disconnected</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>overThreshold</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>timeout</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>busy</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>notConnected</newvalue>
+                </mapping>
+                <mapping>
+                    <value>7</value>
+                    <newvalue>dropped</newvalue>
+                </mapping>
+                <mapping>
+                    <value>8</value>
+                    <newvalue>sequenceError</newvalue>
+                </mapping>
+                <mapping>
+                    <value>9</value>
+                    <newvalue>verifyError</newvalue>
+                </mapping>
+                <mapping>
+                    <value>10</value>
+                    <newvalue>applicationSpecific</newvalue>
+                </mapping>
+                <mapping>
+                    <value>11</value>
+                    <newvalue>dnsServerTimeout</newvalue>
+                </mapping>
+                <mapping>
+                    <value>12</value>
+                    <newvalue>tcpConnectTimeout</newvalue>
+                </mapping>
+                <mapping>
+                    <value>13</value>
+                    <newvalue>httpTransactionTimeout</newvalue>
+                </mapping>
+                <mapping>
+                    <value>14</value>
+                    <newvalue>dnsQueryError</newvalue>
+                </mapping>
+                <mapping>
+                    <value>15</value>
+                    <newvalue>httpError</newvalue>
+                </mapping>
+                <mapping>
+                    <value>16</value>
+                    <newvalue>error</newvalue>
+                </mapping>
+                <mapping>
+                    <value>17</value>
+                    <newvalue>mplsLspEchoTxError</newvalue>
+                </mapping>
+                <mapping>
+                    <value>18</value>
+                    <newvalue>mplsLspUnreachable</newvalue>
+                </mapping>
+                <mapping>
+                    <value>19</value>
+                    <newvalue>mplsLspMalformedReq</newvalue>
+                </mapping>
+                <mapping>
+                    <value>20</value>
+                    <newvalue>mplsLspReachButNotFEC</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
